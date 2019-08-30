@@ -270,8 +270,8 @@ public class DBFField {
 	 */
 	protected void write(DataOutput out, Charset charset) throws IOException {
 		// Field Name
-		out.write(this.name.getBytes(charset)); /* 0-10 */
-		out.write(new byte[11 - this.name.length()]);
+		out.write(this.name.getBytes(charset)); /* 0-10 [-79, -32, -62, -21] */
+		out.write(new byte[11 - this.name.getBytes(charset).length]);
 
 		// data type
 		out.writeByte(this.type.getCode()); /* 11 */
@@ -338,9 +338,9 @@ public class DBFField {
 		if (name.length() == 0 || name.length() > 10) {
 			throw new IllegalArgumentException("Field name should be of length 0-10");
 		}
-		if (!DBFUtils.isPureAscii(name)) {
-			throw new IllegalArgumentException("Field name must be ASCII");
-		}
+//		if (!DBFUtils.isPureAscii(name)) {
+//			throw new IllegalArgumentException("Field name must be ASCII");
+//		}
 		this.name = name;
 	}
 

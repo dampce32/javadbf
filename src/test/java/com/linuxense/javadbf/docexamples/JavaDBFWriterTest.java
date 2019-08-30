@@ -31,7 +31,7 @@ public class JavaDBFWriterTest {
 		DBFField[] fields = new DBFField[3];
 
 		fields[0] = new DBFField();
-		fields[0].setName("emp_code");
+		fields[0].setName("编码");
 		fields[0].setType(DBFDataType.CHARACTER);
 		fields[0].setLength(10);
 
@@ -45,9 +45,9 @@ public class JavaDBFWriterTest {
 		fields[2].setType(DBFDataType.NUMERIC);
 		fields[2].setLength(12);
 		fields[2].setDecimalCount(2);
-		
+		String fileName = "D:1.dbf";
 		// Create writer
-		DBFWriter writer = new DBFWriter(new FileOutputStream(args[0]));
+		DBFWriter writer = new DBFWriter(new FileOutputStream(fileName));
 		writer.setFields(fields);
 
 		// now populate DBFWriter
