@@ -20,6 +20,7 @@ package com.linuxense.javadbf.docexamples;
 
 import com.linuxense.javadbf.*;
 import java.io.*;
+import java.nio.charset.Charset;
 
 public class JavaDBFWriterTest {
 
@@ -45,15 +46,15 @@ public class JavaDBFWriterTest {
 		fields[2].setType(DBFDataType.NUMERIC);
 		fields[2].setLength(12);
 		fields[2].setDecimalCount(2);
-		String fileName = "D:1.dbf";
+		String fileName = "D:/1.dbf";
 		// Create writer
-		DBFWriter writer = new DBFWriter(new FileOutputStream(fileName));
+		DBFWriter writer = new DBFWriter(new FileOutputStream(fileName),Charset.forName("gbk"));
 		writer.setFields(fields);
 
 		// now populate DBFWriter
 
 		Object rowData[] = new Object[3];
-		rowData[0] = "1000";
+		rowData[0] = "中文001";
 		rowData[1] = "John";
 		rowData[2] = new Double(5000.00);
 
